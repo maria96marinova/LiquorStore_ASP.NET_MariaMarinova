@@ -1,0 +1,44 @@
+﻿@using LiquorStore.Services.Liquors.Models
+@model IEnumerable<LiquorBasicServiceModel>
+
+<h2>Your Cart</h2>
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Category
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var c in Model)
+    {
+        <tbody>
+            <tr>
+                <td>@c.Name</td>
+                <td>@c.Price</td>
+                <td>@c.CategoryName</td>
+            </tr>
+        </tbody>
+    }
+
+</table>
+
+<br/>
+
+Total: <span>@Model.Sum(c => c.Price)</span>
+       <br />
+
+<form action="/shopping/order" method="post">
+   Address: <input type="text" required name="address" class="form-control" /> <br/>
+  <input type="submit" class="btn btn-success" value="Order" />
+</form>
+
+

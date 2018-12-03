@@ -1,0 +1,69 @@
+﻿@using LiquorStore.Services.Liquors.Models
+@model IEnumerable<LiquorBasicServiceModel>
+
+@if (TempData.ContainsKey("success"))
+{
+    <div class="alert-success">
+        @TempData["success"]
+    </div>
+}
+
+
+@if (TempData.ContainsKey("deleted"))
+{
+    <div class="alert-success">
+        @TempData["deleted"]
+    </div>
+}
+
+<h3>Liquors - Total count: @Model.Count()</h3>
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Category
+            </th>
+            <th></th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var c in Model)
+    {
+        <tbody>
+            <tr>
+                <td>@c.Name</td>
+                <td>@c.Price</td>
+                <td>@c.CategoryName</td>
+                <td>
+                    <img class="card-img-top rounded mx-auto d-block" style="height: 10rem;" 
+                         src="@Url.Content("~/Content/Images/" + c.ImageUrl)"
+                         alt="Card image cap" />
+                </td>
+                <td><a class="btn btn-secondary" href="/liquor/edit/@c.Id">Edit</a></td>
+                <td>
+                    @using (Html.BeginForm("Delete", "Liquor", new { Id = c.Id }, FormMethod.Post))
+                    {
+                        <input type="submit" value="Delete" class="btn btn-secondary btn-danger" />
+                    }
+                </td>
+            </tr>
+        </tbody>
+    }
+
+</table>
+
+<a class="btn btn-secondary" href="/liquor/create">Add</a>
+
+

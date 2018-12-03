@@ -1,0 +1,62 @@
+﻿@model LiquorStore.Web.Models.LiquorEditFormModel
+  
+
+<h2>Edit the Product</h2>
+
+<form action="/liquor/edit/@Model.Id" method="post">
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.FormModel.Name, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FormModel.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FormModel.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.FormModel.Price, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FormModel.Price, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FormModel.Price, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FormModel.CategoryId, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.FormModel.CategoryId, Model.FormModel.Categories)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FormModel.ImageUrl, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FormModel.ImageUrl, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FormModel.ImageUrl, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FormModel.AlcoholByVolume, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FormModel.AlcoholByVolume, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FormModel.AlcoholByVolume, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FormModel.Description, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FormModel.Description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FormModel.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FormModel.PromotionCode, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FormModel.PromotionCode, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FormModel.PromotionCode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <input class="btn btn-success" type="submit" value="Save" />
+
+</form>
+
+

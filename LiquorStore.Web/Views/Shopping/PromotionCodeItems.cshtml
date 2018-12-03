@@ -1,0 +1,49 @@
+﻿@model IEnumerable<LiquorStore.Services.Liquors.Models.LiquorDetailsServiceModel>
+
+
+@if (TempData.ContainsKey("error"))
+{
+    <div class="alert-danger">
+        @TempData["error"]
+    </div>
+}
+
+@if (TempData.ContainsKey("successOrder"))
+{
+    <div class="alert-success">
+        @TempData["successOrder"]
+    </div>
+}
+
+
+<h2>Items with Promotion Code</h2>
+
+<div class="row">
+
+    @foreach (var product in Model)
+    {
+        <div class="col-sm-4">
+            <div class="card" style="width: 16rem; height: 33rem">
+                <img class="card-img-top rounded mx-auto d-block" style="height: 10rem;" src="@Url.Content("~/Content/Images/" + product.ImageUrl)"
+                     alt="Card image cap">
+                <div class="card-body" style="background-color: lightblue">
+                    <h5 class="card-title">@product.Name $@product.Price</h5>
+                    <p class="card-text">Category: @product.CategoryName</p>
+                    <p class="card-text">@product.Description</p>
+                    <p class="card-text">Alcohol: @product.AlcoholByVolume %</p>
+                    <form action="/shopping/buyWithPromotionCode" method="post">
+                        <input hidden name="productId" value="@product.Id" />
+                       Code: <input class="form-control col-sm-8" type="text" required name="code" /> <br/>
+                        Address: <input type="text" class="form-control col-sm-6" required name="address" />
+                        <input type="submit" class="btn btn-success btn-sm" value="Buy" />
+                    </form>
+                   
+                </div>
+            </div>
+        </div>
+        <br />
+    }
+
+</div>
+
+

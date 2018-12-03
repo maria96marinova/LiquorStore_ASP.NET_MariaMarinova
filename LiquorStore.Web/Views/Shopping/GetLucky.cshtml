@@ -1,0 +1,27 @@
+﻿@using LiquorStore.Services.Liquors.Models
+@model IEnumerable<LiquorDetailsServiceModel>
+
+<h2>Get Lucky</h2>
+
+<div class="row">
+
+    @foreach (var product in Model)
+    {
+        <div class="col-sm-4">
+            <div class="card" style="width: 16rem; height: 26rem">
+                <img class="card-img-top rounded mx-auto d-block" style="height: 10rem;" src="@Url.Content("~/Content/Images/" + product.ImageUrl)"
+                     alt="Card image cap">
+                <div class="card-body" style="background-color: lightblue">
+                    <h5 class="card-title">@product.Name $@product.Price</h5>
+                    <p class="card-text">Category: @product.CategoryName</p>
+                    <p class="card-text">@product.Description</p>
+                    <p class="card-text">Alcohol: @product.AlcoholByVolume %</p>
+                    <a href="/shopping/addToCart/@product.Id" class="btn btn-primary">Add To Cart</a>
+                </div>
+            </div>
+        </div>
+        <br />
+    }
+
+</div>
+

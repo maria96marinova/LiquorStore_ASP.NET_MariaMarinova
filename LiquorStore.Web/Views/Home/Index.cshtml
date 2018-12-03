@@ -1,0 +1,31 @@
+﻿@if (TempData.ContainsKey("success"))
+{
+    <div class="alert-success">
+        @TempData["success"]
+    </div>
+}
+
+@if (TempData.ContainsKey("error"))
+{
+    <div class="alert-danger">
+        @TempData["error"]
+    </div>
+}
+
+<div id="wrapper">
+    <div id="container">
+        <div class="card" style="background-color:lightgreen;">
+            <div id="welcome">
+                <h1 class="card-header" style="background-color:deepskyblue;">Welcome to Liquor Store <span>Happiness and Comfort (H&C)</span> </h1>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"> High-Quality Alcohol,  Special Offers</h5>
+                <p class="card-text"></p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
